@@ -1,2 +1,0 @@
-# Szamitogepi_Grafika
-Szamitogepi_Grafika féléves feladata
