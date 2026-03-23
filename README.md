@@ -1,40 +1,49 @@
-Park Projekt - OpenGL 3D Színtér
-Ez egy C nyelven írt, SDL2 és Legacy OpenGL alapú 3D alkalmazás, amely egy faobjektumokkal benépesített parkot szimulál dinamikus bevilágítással és ködeffektussal.
+Park Projekt
 
-Funkciók
-Kamera és irányítás
-FPS nézet: Euler-szögek alapú első személyű kamerakezelés.
+Futtatas
+- Forditas: make
+- Inditas: program.exe
 
-Egér: Szabad körbenézés (Pitch és Yaw) függőleges korlátozással.
+Build kornyezet (Windows)
+- A Makefile alapbol ezt hasznalja: C:/msys64/ucrt64
+- Ha mashol van az SDL2 vagy masik GCC-t hasznalsz, felulirhato:
+	- make SDL2_PREFIX=C:/eleresi/ut/az/sdl2-hoz
+	- make CC=C:/eleresi/ut/gcc.exe
 
-Mozgás: Nézési iránytól függő WASD alapú közlekedés.
+Kezeles
+- Mozgas: W, A, S, D
+- Kameraforgatas: eger
+- Fenyero: + / -
+- Feny pozicio mozgatasa: nyilak (X/Z), R/F (Y)
+- Automata fenykorpalya be/ki: O
+- Kivalasztott fa valtas: T
+- Kivalasztott fa mozgatasa: J=bal, L=jobb, I=fel, K=le
+- Kod suruseg: 9 (novel), 8 (csokkent)
+- Kod ki/be: G
+- Eso ki/be: P
+- Hasznalati utmutato megjelenitese: F1
+- Kilepes: ESC
 
-Ütközés: Alapszintű kör alapú ütközésvizsgálat a fák törzsével.
+Megvalositott kovetelmenyek
+- Kamerakezeles billentyuzettel es egerrel
+- Objektumok betoltese kulon modellfajlbol (OBJ)
+- Interaktivitas es animacio (feny animacio + mozgatasi lehetosegek)
+- Modellek texturazasa
+- Fenyero allitasa + / - billentyukkel
+- F1-re elerheto hasznalati utmutato
+- Kodhatas (fog)
 
-Renderelés és látvány
-Modellbetöltő: Egyedi .obj fájl olvasó, amely kezeli a csúcspontokat, textúra-koordinátákat és normálisokat.
+Plusz funkciok (5 db)
+- Kod dinamikus valtoztatasa (suruseg allitas + ki/be)
+- Reszecskerendszer: eso effekt
+- Atlatszosag: felig atlatszo, kor alaku, enyhen hullamzo vizfelulet
+- Arnyehatas: fak alatti vetitett arnyekfolt
+- Utkozesvizsgalat: AABB (bounding-box) kamera-fa utkozes
 
-Dinamikus bevilágítás: Időben változó napállás (körpályán mozgó fényforrás) állítható fényerővel.
+Esztetikai kiegeszites
+- A tavacska korul kavicsgyuru van, ami elhatarolja a viz partjat.
 
-Köd: Exponenciális (EXP2) ködeffektus a mélységérzet növeléséhez.
-
-Skybox: Egyszerű gradiens alapú égbolt és talaj sík.
-
-Használat
-Irányítás
-Egér: Nézelődés.
-
-W / A / S / D: Mozgás.
-
-+ / -: Fényerő növelése és csökkentése.
-
-ESC: Kilépés.
-
-Tervezett fejlesztések
-Modern OpenGL: Áttérés shaderekre (GLSL) és VBO/VAO használatára a fix csővezeték helyett.
-
-Textúrázás: A fák és a talaj tényleges textúrázása az anyagtulajdonságok alapján.
-
-Fizika: Gravitáció és ugrás funkció implementálása.
-
-Növényzet: Többféle növénytípus támogatása a színtérben.
+Tovabbi park elemek
+- Tobb fa kerult a parkba a surubb, termeszetesebb latvanyert.
+- Van egy 3D pad kozvetlenul az ut mellett.
+- Van egy, a terepbe enyhen sullyesztett ut, ami keresztulvezet a parkon, es leagazik a tavacska fele.
