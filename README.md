@@ -4,12 +4,6 @@ Futtatas
 - Forditas: make
 - Inditas: program.exe
 
-Build kornyezet (Windows)
-- A Makefile alapbol ezt hasznalja: C:/msys64/ucrt64
-- Ha mashol van az SDL2 vagy masik GCC-t hasznalsz, felulirhato:
-	- make SDL2_PREFIX=C:/eleresi/ut/az/sdl2-hoz
-	- make CC=C:/eleresi/ut/gcc.exe
-
 Kezeles
 - Mozgas: W, A, S, D
 - Kameraforgatas: eger
