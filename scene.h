@@ -15,6 +15,7 @@ typedef struct {
 
 void load_scene(Scene* scene, const char* filename);
 void draw_scene(Scene* scene, Model* tree_model);
+void draw_scene_with_selection(Scene* scene, Model* tree_model, int selected_index);
 void draw_scene_shadows(Scene* scene);
 int check_collision(Scene* scene, float x, float z, float radius);
 int check_collision_aabb(Scene* scene, float x, float z, float half_extent);

@@ -415,7 +415,7 @@ int main(int, char**) {
         draw_scene_shadows(&scene);
         draw_transparent_water((float)current_ticks / 1000.0f);
         draw_bench(4.1f, -12.0f, -90.0f);
-        draw_scene(&scene, &tree_model);
+        draw_scene_with_selection(&scene, &tree_model, selected_tree);
         if (rain_enabled) {
             update_rain(rain, &camera, (float)dt);
             draw_rain(rain);

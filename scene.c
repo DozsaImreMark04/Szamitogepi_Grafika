@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <math.h>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 void draw_scene_shadows(Scene* scene) {
     const int segments = 18;
 
@@ -49,12 +53,41 @@ void load_scene(Scene* scene, const char* filename) {
 }
 
 void draw_scene(Scene* scene, Model* tree_model) {
+    draw_scene_with_selection(scene, tree_model, -1);
+}
+
+void draw_scene_with_selection(Scene* scene, Model* tree_model, int selected_index) {
     for (int i = 0; i < scene->tree_count; i++) {
         glPushMatrix();
             glTranslatef(scene->trees[i].x, scene->trees[i].y, scene->trees[i].z);
             glScalef(scene->trees[i].scale, scene->trees[i].scale, scene->trees[i].scale);
             draw_model(tree_model);
         glPopMatrix();
+    }
+    
+    /* Rajzolj kijelölési jelölőt a kiválasztott fa körül. */
+    if (selected_index >= 0 && selected_index < scene->tree_count) {
+        glDisable(GL_LIGHTING);
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        
+        float sel_x = scene->trees[selected_index].x;
+        float sel_z = scene->trees[selected_index].z;
+        float sel_radius = 1.2f * scene->trees[selected_index].scale;
+        
+        glBegin(GL_LINE_LOOP);
+        glColor4f(1.0f, 1.0f, 0.0f, 0.8f); /* Sárga körül */
+        for (int j = 0; j < 32; j++) {
+            float angle = (float)j / 32.0f * 2.0f * (float)M_PI;
+            float x = sel_x + cosf(angle) * sel_radius;
+            float z = sel_z + sinf(angle) * sel_radius;
+            glVertex3f(x, 0.3f, z);
+        }
+        glEnd();
+        
+        glDisable(GL_BLEND);
+        glEnable(GL_LIGHTING);
     }
 }
 
